@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - 2-WHEELER Garage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=2.0">
+    <style>
+        :root {
+            --primary: #a5b4fc;
+            --primary-hover: #818cf8;
+            --bg-color: #020617;
+            --card-bg: rgba(15, 23, 42, 0.4);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --glass-glow: rgba(165, 180, 252, 0.03);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+            background-image:
+                radial-gradient(circle at top left, rgba(99, 102, 241, 0.1), transparent),
+                radial-gradient(circle at bottom right, rgba(167, 139, 250, 0.08), transparent),
+                url('login_bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .login-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            padding: 3.5rem;
+            border-radius: 2rem;
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: cardAppear 1s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal-text {
+            opacity: 1;
+            /* Always visible for now */
+        }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.625rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(165, 180, 252, 0.1);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: #020617;
+            border: none;
+            border-radius: 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px -5px rgba(165, 180, 252, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            padding: 0.5rem;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        .secondary-btn:hover {
+            border-color: var(--primary);
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        #message {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            min-height: 1.25rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-card">
+        <h1 class="reveal-text">Admin Portal</h1>
+        <p class="subtitle reveal-text" style="animation-delay: 0.1s;">2-WHEELER Garage Management</p>
+
+        <form id="loginForm">
+            <div class="form-group reveal-text" style="animation-delay: 0.2s;">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter admin username" required>
+            </div>
+            <div class="form-group reveal-text" style="animation-delay: 0.3s;">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="reveal-text" style="animation-delay: 0.4s;">Sign In to Dashboard</button>
+        </form>
+
+        <div id="message"></div>
+
+        <div class="reveal-text"
+            style="animation-delay: 0.5s; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+            <button id="setupAdmin" class="secondary-btn">Setup Test Admin</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = 'Authenticating...';
+            messageDiv.style.color = 'var(--primary)';
+
+            const payload = {
+                username: document.getElementById('username').value,
+                password: document.getElementById('password').value
+            };
+
+            try {
+                const res = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    localStorage.setItem('user', JSON.stringify(data));
+                    messageDiv.textContent = 'Login successful! Redirecting...';
+                    messageDiv.style.color = 'var(--success)';
+
+                    setTimeout(() => {
+                        if (data.role === 'ADMIN') {
+                            window.location.href = '/dashboard';
+                        } else {
+                            window.location.href = '/home';
+                        }
+                    }, 800);
+                } else {
+                    const error = await res.json();
+                    messageDiv.textContent = error.message || 'Invalid credentials';
+                    messageDiv.style.color = '#ef4444';
+                }
+            } catch (err) {
+                console.error(err);
+                messageDiv.textContent = 'Server connection failed';
+                messageDiv.style.color = '#ef4444';
+            }
+        });
+
+        document.getElementById('setupAdmin').addEventListener('click', async () => {
+            const res = await fetch('/api/setup-admin', { method: 'POST' });
+            const msg = await res.text();
+            alert(msg + '\nUsername: admin\nPassword: admin123');
+        });
+
+        // Redirect if already logged in
+        window.onload = () => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                window.location.href = user.role === 'ADMIN' ? '/dashboard' : '/home';
+            }
+        };
+    </script>
+</body>
+
+</html>
